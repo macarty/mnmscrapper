@@ -15,7 +15,7 @@ Dependencies
 
 Case uses
 - Regenerate the graph (warning, takes ages)
-- Calculate the graph absolute position (no multiprocessor library used, sorry)
+- Calculate the graph absolute position (no multiprocessor library used, sorry, so again, takes ages)
 - Calculate top centrality, degree, betweenness and eigenvectors and plot them
 - Calculate a graph of relationships using your own list
 

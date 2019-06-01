@@ -1,7 +1,7 @@
 # mnmscrapper
 Is a graph (as in graph theory) tool to analyse relationships within a well-known social network in Spain. This thing shows off how relations are happening on this network
 
-Our motivation was to view existing interation within a group of users that are abusing the rest, and how the relationships are being made among them. This helped us to establish some clues about potential astroturfing, cross-voting, etc, using only public information, which is of little interest to no one, but helps explaining the group dynamics.
+Our motivation was to analyse the relationship of the top news senders, view existing interaction within a group of users that are abusing the rest, and how the relationships are being made among both groups. This helped us to establish some clues about potential astroturfing, cross-voting, etc, using only public information, which is of little interest to no one, but helps explaining the group dynamics.
 
 Yep, we did it. we're also uploading some binaries that helps to do some research backwards. Data obtained is ok for mid-May 2019.
 What it does?

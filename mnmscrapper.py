@@ -70,6 +70,7 @@ def loadDefaults():
 
 def checkProfiles():
     #Encapsulation for bulk getProfile
+    global nodeList
     print("Checking profiles and loading metadata")
     for i in nodeList.keys():
         getProfile(i)
@@ -77,6 +78,7 @@ def checkProfiles():
         sleep(2)
 
 def getProfile(user):
+    global nodeList
     try:
         print("processing " + user)
         html = urlopen(urlbase+ urllib.parse.quote(user + "/profile"))

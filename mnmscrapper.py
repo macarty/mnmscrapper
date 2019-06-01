@@ -52,6 +52,7 @@ class userNode:
         self.voteNote = {}
 
 def loadDefaults():
+    global nodeList
     print("Reading and building initial node lists with seed")
     f=open("./lusersclean")
     line = f.readline()
@@ -151,6 +152,7 @@ def do_Restore(wtr):
 
 
 def getEdgeVotedComments(user):
+    global nodeList
     myUrl = urlbase +  urllib.parse.quote(nodeList[user].user + "/shaken_comments") + "?page="
     limit = 100
     print("Comments voted by "+ user)
@@ -186,6 +188,7 @@ def getEdgeVotedComments(user):
         sleep(1)
 
 def getEdgeVotedNotes(user):
+    global nodeList
     myUrl = urlbase +  urllib.parse.quote(nodeList[user].user + "/notes_votes") + "?page="
     limit = 1000
     print("Notes voted by " + user)

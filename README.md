@@ -13,6 +13,12 @@ Dependencies
 - I've used also the NetworkX library, so it is required as a dependency
 - Matplotlib
 
+Case uses
+- Regenerate the graph (warning, takes ages)
+- Calculate the graph absolute position (no multiprocessor library used, sorry)
+- Calculate top centrality, degree, betweenness and eigenvectors and plot them
+- Calculate a graph of relationships using your own list
+
 Caveats
 
 Using the BeautifulSoup means that a change on the website CSS will make this part useless, however, anyone with enough skills and a web code analyzer can implement quickly the changes and make this thing operational

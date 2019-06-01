@@ -14,6 +14,7 @@ Dependencies
 - Matplotlib
 
 Caveats
+
 Using the BeautifulSoup means that a change on the website CSS will make this part useless, however, anyone with enough skills and a web code analyzer can implement quickly the changes and make this thing operational
 
 In addition to this, I've not been coding for ages. The quality of the code is definitely poor.

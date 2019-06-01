@@ -6,7 +6,9 @@ Well, it builds a directed graph with the votes to notes and comments between us
 
 It is implemented with 2 classes, one for the node itself, the second for the edge between nodes. The graph is a Python dict() of dict()s, so implements the data structure equivalent of a list of lists
 
+As the graph generation takes a while, there's a facility to load & backup precalculated distances.
 
+Note: as you can see, all the data used is PUBLIC, nicknames does not represent or references any personal data, so no GDPR concerns at all.
 
 Dependencies
 - To generate the reverse graph I had to use BeautifulSoup library. 

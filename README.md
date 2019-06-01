@@ -16,8 +16,8 @@ Note: as you can see, all the data used is PUBLIC, nicknames does not represent 
 
 Dependencies
 - To generate the reverse graph I had to use BeautifulSoup library. 
-- I've used also the NetworkX library, so it is required as a dependency
-- Matplotlib
+- NetworkX library is required as a dependency
+- Matplotlib to plot graphs.
 
 Case uses
 - Regenerate the graph (warning, takes ages)

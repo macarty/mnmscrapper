@@ -3,7 +3,9 @@ Is a graph (as in graph theory) tool to analyse relationships within a well-know
 
 Our motivation was to analyse the relationship of the top news senders, view existing interaction within a group of users that are abusing the rest, and how the relationships are being made among both groups. This helped us to establish some clues about potential astroturfing, cross-voting, etc, using only public information, which is of little interest to no one, but helps explaining the group dynamics.
 
-Yep, we did it. we're also uploading some binaries that helps to do some research backwards. Data obtained is ok for mid-May 2019.
+Yep, we did it. There's a PDF (in Spanish) that cannot be considered a paper, however contains insights of this and other research we've done during past years.
+We've also uploaded binary objects with the raw data structure that can help the research to others. Data obtained comes for mid-May 2019.
+
 What it does?
 Well, it builds a directed graph with the votes to notes and comments between users. it is a weighted graph, so it can be regenerated using "heat" as absolute votes (I've left this on the node, as is interesting and can be used for other purposes)
 

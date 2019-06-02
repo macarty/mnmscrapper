@@ -256,6 +256,7 @@ def findPos(user):
     return foundPos
 
 def genMatrix(size):
+    global adjMatrix
     adjMatrix = []
     mySize = 10
     # First of all, let's generate the di-graph with a matrix full of 0s
@@ -269,8 +270,21 @@ def genMatrix(size):
     return adjMatrix
 
 def friendOrFoe(user1,user2):
+    global nodeList
+    myGuessing=0
     whereUser1 = findPos(user1)
     whereUser2 = findPos(user2)
+    # the idea is to have a -1 to 1 value. -1 means nemesis, 1 means bestie, ally should be between 0.25 to 0.8.
+    # values nearby 0 values is "neutral", foe between -0.8 to -0.25
+    # http://snap.stanford.edu/class/cs224w-readings/brzozowskl08friendsandfoes.pdf
+    # ideally voting values from both users each other should be similar. It can be checked later.
+    if user1 not in nodeList.keys():
+        return -3
+    if user2 not in nodeList[user1].voteComment.keys():
+        return -2
+    else:
+        myGuessing = nodeList[user1].voteComment[user2].value / nodeList[user1].voteComment[user2].getHeat()
+    return myGuessing
 
 
 def genAll():
@@ -333,6 +347,7 @@ def genericActions():
     global degreeCentral
     global closenessCentral
     global eigenCentral
+    global Gfriends
     nodeList = do_Restore('nodes')
     for i in nodeList.keys():
         targetList.append(nodeList[i].user)
@@ -364,30 +379,39 @@ def genericActions():
     print("eigenvector ")
     print(sorted(eigenCentral,key=eigenCentral.get,reverse=True)[:40])
 
+
+def genUserGraph(withThisList):
+    global Gfriends
+    global betCent
+    genericActions()
+    node_color = [20000.0 * Gfriends.degree(v) for v in Gfriends]
+    node_size = [v * 10000 for v in betCent.values()]
+    plt.figure(figsize=(50,50))
+    minidict = {}
+    minilist = []
+    for i in withThisList:
+        minilist.append(i)
+        for j in nodeList[i].voteComment.keys():
+            if j not in minidict.keys():
+                minidict[j] = nodeList[i].voteComment[j].value
+    print(sorted(minidict,key=minidict.get,reverse=True)[:20])
+    for elem in sorted(minidict,key=minidict.get,reverse=True)[:20]:
+        minilist.append(elem)
+    #kkkk = Gfriends.subgraph(sorted(eigenCentral,key=eigenCentral.get,reverse=True)[:35])
+    kkkk = Gfriends.subgraph(minilist)
+    nx.draw_networkx(kkkk, pos = pos)
+    if len(withThisList) == 1:
+        plt.savefig(withThisList[0] + ".png")
+    else:
+        plt.savefig("userGraphReport.png")
+
+
 genericActions()
-print(len(nodeList.keys()))
-node_color = [20000.0 * Gfriends.degree(v) for v in Gfriends]
-node_size = [v * 10000 for v in betCent.values()]
-plt.figure(figsize=(50,50))
-minidict = {}
-minilist = []
-for i in ['KarmaPimp']:
-    minilist.append(i)
-    for j in nodeList[i].voteComment.keys():
-        if j not in minidict.keys():
-            minidict[j] = nodeList[i].voteComment[j].value
-print(sorted(minidict,key=minidict.get,reverse=True)[:20])
-for elem in sorted(minidict,key=minidict.get,reverse=True)[:20]:
-    minilist.append(elem)
-#kkkk = Gfriends.subgraph(sorted(eigenCentral,key=eigenCentral.get,reverse=True)[:35])
-kkkk = Gfriends.subgraph(minilist)
-nx.draw_networkx(kkkk, pos = pos)
-plt.savefig("KarmaPimp.png")
-
-# print(betCent)
-
-
 print(nx.info(Gfriends))
+
+print(str(friendOrFoe('Charles_Dexter_Ward','JavierB')))
+print(str(friendOrFoe('JavierB','Charles_Dexter_Ward')))
+
 #node_color = [20000.0 * Gfriends.degree(v) for v in Gfriends]
 #node_size = [v * 10000 for v in betCent.values()]
 #plt.figure(figsize=(50,50))
